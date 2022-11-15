@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <title>PDF rotator</title>
+  </head>
+  <body>
+    {% with message = get_flashed_messages(with_categories=true) %} {% if
+    message %} {% for category, message in message %}
+    <div
+      class="alert alert-{{category}} alert-dismissible fade show"
+      role="alert"
+    >
+      {{message}}
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      ></button>
+    </div>
+    {% endfor %} {% endif %} {% endwith %}
+    <div class="container">
+      <form method="POST" enctype="multipart/form-data" class="form-group">
+        <h1 align="center" class="mt-3">PDF Rotator</h1>
+        <div class="mb-3">
+          <label for="formFile" class="form-label">
+            Select a file from your device
+          </label>
+          <input
+            type="file"
+            name="file"
+            id="formFile"
+            class="form-control"
+            required
+            accept="application/pdf"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="page">
+            Enter the page number that you want to rotate:
+          </label>
+          <input
+            type="number"
+            id="page"
+            name="page"
+            min="0"
+            class="form-control"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="angle">
+            Enter the angle by which you want the page to be rotated (in
+            multiple of 90):
+          </label>
+          <input
+            type="number"
+            id="angle"
+            name="angle"
+            step="90"
+            class="form-control"
+            required
+          />
+        </div>
+        <input type="submit" value="Upload" class="btn btn-primary" />
+      </form>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
